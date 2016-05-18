@@ -54,7 +54,13 @@
 .flexslider .slides img {
   width: 100%;
   display: table;
+  -webkit-transition: all 3000ms;
+   transition: all 3000ms;
 }
+.flexslider .slides img:hover{
+  transform: rotate(3deg) scale(1.2, 1.2);
+}
+
 .flexslider .slides:after {
   content: "\0020";
   display: block;

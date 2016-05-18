@@ -10,6 +10,12 @@
 	width: 99%;
 	margin-left: 0%;
 	}
+	.tasteBlock{
+  width: 32%;
+  }
+  .line span{
+	width: 87%;
+	font-size: 20px;
 }
 
 @media only screen and (min-width: 800px){

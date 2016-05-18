@@ -1,4 +1,4 @@
-var http_IP = process.env.IP || "0.0.0.0";
+var http_IP = process.env.IP || "127.0.0.1";
 var http_port = process.env.PORT || 3000;
 
 var http = require('http');  
