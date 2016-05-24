@@ -5,7 +5,9 @@
 @font-face {
   font-family: "moon_flower_boldregular";
   src: url("../../fonts/Ampir.ttf"); }
-
+body{
+	overflow-x: hidden;
+}
 header {
   background: url(../../img/header.png);
   background-repeat: repeat-x;
@@ -129,7 +131,7 @@ h3{
 	margin-top: 20px;
 	width: 100%;
 }
-.orderForm{
+#orderForm{
 	width: 50%;
 	margin-left: 25%;
 }
@@ -141,9 +143,11 @@ h3{
 	display: block;
 	width: 100%;
   margin-bottom: 15px;
- 
 }
-.send{
+.empty{
+	border-color: red;
+}
+#send{
 	background-color: #9ec9c4;
 	color:#ffffff;
 	text-align: center;
@@ -154,9 +158,18 @@ h3{
   font-family: 'myFont';
   margin-left: 25%;
   border-radius: 25px;
+  padding:15px 10px;
+  margin-bottom: 15px;
 }
-.send:hover{
+#send:hover{
 	background-color: #95D5CE;
+}
+#sendMessage{
+	font-family: 'myFont';
+	font-size: 26px;
+	color:red;
+	margin-left: 25%;
+ 	margin-bottom: 15px;
 }
 
 /*Taste Cake*/

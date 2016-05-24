@@ -171,12 +171,15 @@
 		<div class="order">
 		<img src="img/heard.svg">
 			<p>Замовити</p>
-			<form class="orderForm">
-				<input class="orderInput" type="text" placeholder="Ім`я">
-				<input class="orderInput" type="email" placeholder="Емейл">
-				<textarea rows="5" class="orderInput" placeholder="Побажання до замовлення"></textarea>
-				<button class="send orderInput">Відправити</button>
+			<div id="sendMessage"></div>
+			<form id="orderForm">
+				<input class="orderInput" name="user" type="text" placeholder="Ім`я">
+				<input class="orderInput" name="email" type="email" placeholder="Емейл">
+				<input class="orderInput" name="phone" type="tel" placeholder="Контактний тел.">
+				<textarea rows="5" class="orderInput" name="description" placeholder="Побажання до замовлення"></textarea>
+				<button id="send">Відправити</button>
 			</form>
+			
 			<img src="img/heard.svg">
 		</div>
 	</main>
