@@ -13,7 +13,7 @@ header {
   background-repeat: repeat-x;
   height: 300px; }
 
-header div p ,.order p, .taste p,.works p{
+header div p ,.order p, .taste p,.works p,.contact p{
 	display: block;
 	margin-bottom: 30px;
   text-align: center;
@@ -54,13 +54,38 @@ header p:hover,.order p:hover,.works p:hover{
 	font-family: "moon_flower_boldregular";
 	text-decoration: none;
 }
+/*Social Icons*/
+.socialIcons{
+	width: 15%;
+  margin-top: 12%;
+  margin-left: 85%;
+}
+.iconVk,.iconFb,.iconGl{
+	width: 46px;
+ 	height: 46px;
+ 	display: inline-block;
+ 	border-radius: 50px;
+  background-image: url('../img/social/icons.png'); 
+}
+.iconVk:hover,.iconFb:hover,.iconGl:hover{
+	transform: scale(1.15, 1.15);
+	cursor:pointer;
+}
+.iconVk{
+	background-position: -28px -104px;; 
+}
+.iconFb{
+	background-position: -29px -44px;;
+}
+.iconGl{
+	background-position: -209px -44px;; 
+}
 
 /*About page*/
 .price{
 	width: 80%;
 	margin-left: 10%;
 	margin-top: 40px;
-	margin-bottom: 40px;
 }
 .cakePrice{
 	width: 33%;
@@ -93,11 +118,13 @@ header p:hover,.order p:hover,.works p:hover{
 	border-radius: 10px;
 	border-radius: 55px;
   padding: 10px;
+  margin-top: 40px;
 }
-.about p{
+.about p,.contactInfo p{
 	color: rgba(75, 75, 83, 0.86);
 	font-family: "myFont";
 	font-size: 35px;	
+	text-align: center;
 }
 h3{
 	content: "";
@@ -135,7 +162,7 @@ h3{
 	width: 50%;
 	margin-left: 25%;
 }
-.order p, .taste p{
+.order p, .taste p, .contact p{
 	font-size: 50px;
 }
 .orderInput{
@@ -159,7 +186,7 @@ h3{
   margin-left: 25%;
   border-radius: 25px;
   padding:15px 10px;
-  margin-bottom: 15px;
+  margin-bottom: 45px;
 }
 #send:hover{
 	background-color: #95D5CE;
@@ -207,10 +234,29 @@ p.tasteName{
 	text-align: center;
 }
 
+/*Contact us*/
+.contact{
+	width: 80%;
+	margin-left: 10%;
+}
+.contact img{
+	width: 15%;
+	margin:5% 9%;
+}
+.contact img:hover{
+	transform: scale(1.05, 1.05);
+}
+.contactInfo{
+	margin:50px 0px;
+}
+.contactInfo img{
+	margin-left: 40%;
+}
 
 /*Footer*/
 footer{
 	background-image:url(../../img/bottom.png);
 	height: 70px;
 	bottom: 0px;
+	margin-top: 20%;
 }
