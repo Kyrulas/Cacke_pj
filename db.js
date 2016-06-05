@@ -5,10 +5,11 @@ var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
 	password: 'toor',
-	database: 'cacke_db'
-
+	database: 'cacke_db',
+	charset: 'utf8_general_ci'
 });
 connection.connect();
+connection.query('set names utf8');
 /*****************************/
 
 
@@ -38,3 +39,19 @@ function validateOrder(order){
 	return true;
 }
 /*****************************************************************/
+exports.getAllOrders = function(_callback){
+
+	var query = connection.query('select * from Orders', function(err, rows){
+		_callback(rows);
+
+	});
+
+}
+
+exports.deleteOrder = function(id,_callback){
+	connection.query('delete from Orders where id = ?', id, _callback);
+}
+
+exports.changeStatus = function(id,status,_callback){
+	connection.query('UPDATE Orders SET status=? where id=?',[status, id], _callback);
+}
