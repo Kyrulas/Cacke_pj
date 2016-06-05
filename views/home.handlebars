@@ -24,44 +24,134 @@
 			})
 		}
 	}
+	function addTopping(){
+		$.ajax({
+			url:"addTopping",
+			method:"POST",
+			data: $( "#toppingForm" ).serialize(),
+			statusCode: {
+				200: function(result){
+					var form = $( "#toppingForm" ).serializeArray();
+
+					$('#toppingTable tbody').append(
+						"<tr id=\"topping-"+result+"\">"
+						+"<td>"+result+"</td>"
+						+"<td>"+form[0].value+"</td>"
+						+"<td>"+form[1].value+"</td>"
+						+"<td><input type=\"file\" name=\"photo\" onchange=\"addPhoto("+result+",this)\"></td>"
+						+"<td><button onclick=\"deleteTopping("+result+")\">Видалити</button></td>"
+						+"</tr>");
+					$( "#toppingForm" )[0].reset();
+				}
+			}
+		});
+	}
+	function addPhoto(id,self){
+		var data = new FormData();
+		data.append("photo",self.files[0]);
+		$.ajax({
+			url:"addPhoto/" + id,
+			method: "POST",
+			cache: false,
+			contentType: false,
+			processData: false,
+			data:data,
+			statusCode:{
+				200: function(data){
+					$(self).replaceWith("<img src="+data+">");
+				}
+			}
+		})
+	}
+	function deleteTopping(id){
+		$.ajax({
+			url:'/deleteTopping/'+ id, 
+			statusCode:{
+				200:function(){$("#topping-"+id).remove()},
+				404:function(){alert("Начинка була вже видалена")}
+			}
+		});
+	}
 	$(function() {
 		$( "#tabs-min" ).tabs();
+		$( "#toppingForm" ).submit(function( event ) {
+			event.preventDefault();
+			addTopping();
+		});
 	});
 </script>
 <main>
-<div id="tabs-min">
-	<ul>
-		<li><a href="#tabs-1">Замовлення</a></li>
-		<li><a href="#tabs-2">Начинки</a></li>
-		<li><a href="#tabs-3">Роботи</a></li>
-	</ul>
-	<div id="tabs-1">
-		<div id="container">
-			{{#each orders}}
-			<div class="orderBlock">
-				<ul class="orderView orderStatus-{{status}}" id="order-{{id}}">
-					<li>Ім`я: {{name}}</li>
-					<li>Контактний телефон: {{phone}}</li>
-					<li>Емейл: {{email}}</li>
-					<li>Побажання до замовлення: {{description}}</li>	
-					<li>Дата: {{date}}</li>
+	<div id="tabs-min">
+		<ul>
+			<li><a href="#tabs-1">Замовлення</a></li>
+			<li><a href="#tabs-2">Начинки</a></li>
+			<li><a href="#tabs-3">Роботи</a></li>
+		</ul>
+		<div id="tabs-1">
+			<div id="container">
+				{{#each orders}}
+				<div class="orderBlock">
+					<ul class="orderView orderStatus-{{status}}" id="order-{{id}}">
+						<li>Ім`я: {{name}}</li>
+						<li>Контактний телефон: {{phone}}</li>
+						<li>Емейл: {{email}}</li>
+						<li>Побажання до замовлення: {{description}}</li>	
+						<li>Дата: {{date}}</li>
 
 
-					<li class="">
-						{{#equal status 0 }}
-						<input type="button" value="Прийняти замовлення " id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
-						{{/equal}}
-						{{#equal status 1 }}
-						<input type="button" value="Завершити" id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
-						{{/equal}}
-					</li>
-					<li><input type="button" value="Видалити" onclick="deleteOrder({{id}})"/></li>
-				</ul>
+						<li class="">
+							{{#equal status 0 }}
+							<input type="button" value="Прийняти замовлення " id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
+							{{/equal}}
+							{{#equal status 1 }}
+							<input type="button" value="Завершити" id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
+							{{/equal}}
+						</li>
+						<li><input type="button" value="Видалити" onclick="deleteOrder({{id}})"/></li>
+					</ul>
+				</div>
+				{{/each}}
 			</div>
-			{{/each}}
 		</div>
+		<div id="tabs-2">
+			<form id="toppingForm" >
+				<label for"name">Назва начинки</label>
+				<input type="text" name="name" placeholder="Назва начинки" id="name">
+				<label for"description">Опис начинки</label>
+				<input type="text" name="description" placeholder="Опис начинки" id="description">
+				<button>Зберегти</button>
+			</form>
+			<table id="toppingTable">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>Назва начинки</th>
+						<th>Опис начинки</th>
+						<th>Фото начинки</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each toppings}}
+					<tr id="topping-{{id}}">
+						<td>{{id}}</td>
+						<td>{{name}}</td>
+						<td>{{description}}</td>
+						<td>
+							{{#if	photo}}
+							<img src="img/toppings/{{photo}}">
+							{{/if}}
+							{{#equal photo null}}
+							<input type="file" name="photo" onchange="addPhoto({{id}},this)">
+							{{/equal}}
+						</td>
+						<td><button id="deleteTopping-{{id}}" onclick="deleteTopping({{id}})"></button>
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>	
+			</table>
+		</div>
+		<div id="tabs-3">tab2</div>
 	</div>
-	<div id="tabs-2">tab1</div>
-	<div id="tabs-3">tab2</div>
-</div>
 </main>

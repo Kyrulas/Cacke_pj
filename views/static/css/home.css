@@ -48,3 +48,44 @@
 .orderStatus-2 input[id^='status-']{
 	display:none;
 }
+/*Topping Table*/
+#toppingTable{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#666;
+	font-size:13px;
+	text-shadow: 1px 1px 0px #fff;
+	margin:20px;
+	border:#ccc 1px solid;
+	box-shadow: 0 1px 2px #d1d1d1;
+}
+#toppingTable th{
+	padding:10px;
+	border-top:2px solid #fafafa;
+	border-bottom:1px solid #e0e0e0;
+	background: #ededed;
+	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+	
+}
+#toppingTable tr{
+    border-radius: 6px;
+    height: 60px;
+    margin: 10px 0;   
+}
+#toppingTable th, td{
+	text-align: left;
+	padding-left:20px;
+	vertical-align: middle;
+}
+#toppingTable img{
+	margin-top: 10px;
+	height: 76px;
+	width: 78px;
+	border-radius: 200px;
+}
+#toppingTable button{
+	margin-right: 5px;
+}
+#toppingTable button:before{
+	content: "\e00f";
+}

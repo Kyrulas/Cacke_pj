@@ -5,6 +5,9 @@
 @font-face {
   font-family: "moon_flower_boldregular";
   src: url("../../fonts/Ampir.ttf"); }
+  @font-face {
+  font-family: "symbol";
+  src: url("../../fonts/codropsicons.ttf"); }
 body{
 	overflow-x: hidden;
 }
@@ -191,12 +194,15 @@ h3{
 }
 
 /*Taste Cake*/
+.taste{
+	overflow: hidden;
+}
 .line{
 	width: 70%;
 	margin-left: 15%;
 }
 .tasteBlock{
-	display: inline-block;
+	float:right;
   margin-bottom: 35px;
   width: 33%;
 }
@@ -204,8 +210,8 @@ h3{
 	box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.1);
   border-radius: 200px;
   transition: all 0.5s ease;
-  width: 25%;
-  height: 25%;
+  width: 100px;
+  height: 95px;
   margin-left:27%;
   }
 
@@ -290,4 +296,19 @@ footer{
 }
 #tabs-min .ui-tabs-nav{
 	text-align: center;
+}
+
+/*Tabs Form*/
+#tabs-2{
+	width: 50%;
+	margin-left: 25%;
+}
+#tabs-2 input{
+	display: block;
+	margin-bottom: 15px;
+	padding:10px;
+	width: 100%;
+}
+#tabs-2 input[type:file]{
+	background-color: black;
 }

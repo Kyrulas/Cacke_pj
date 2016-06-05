@@ -47,6 +47,11 @@ exports.getAllOrders = function(_callback){
 	});
 
 }
+exports.getAllToppings = function(_callback){
+	var query = connection.query('select * from Toppings', function(err,rows){
+		_callback(rows);
+	})
+}
 
 exports.deleteOrder = function(id,_callback){
 	connection.query('delete from Orders where id = ?', id, _callback);
@@ -54,4 +59,16 @@ exports.deleteOrder = function(id,_callback){
 
 exports.changeStatus = function(id,status,_callback){
 	connection.query('UPDATE Orders SET status=? where id=?',[status, id], _callback);
+}
+
+exports.saveTopping  = function (topping,_callback){
+		var query = connection.query('insert into Toppings set ?', topping, function(err, result){
+		_callback(result);
+	});
+}
+exports.addPhotoToTopping = function(photo,id,_callback){
+	connection.query('UPDATE Toppings SET photo=? where id=?',[photo,id],_callback);
+}
+exports.deleteTopping = function(id,_callback){
+	var query = connection.query('delete from Toppings where id = ?', id, _callback);
 }

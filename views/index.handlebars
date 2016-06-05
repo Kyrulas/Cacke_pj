@@ -76,67 +76,19 @@
 	<!--Taste cake-->
 		<div class="taste" id="topping">
 			<p>Начинки Tортів</p>
+
 			<div class="line">
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaDiana.png" height="76" width="78">
-				<p class="tasteName">Шоколадна</p>
-				<span>Kоржі - бісквіт; Hачинка - арахіс, родзинки, банан; Крем - шоколад.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaMilka.png" height="76" width="78">
-				<p class="tasteName">Горіхова</p>
-				<span>Коржі - бісквіт білий; Начинка - джем, арахіс; Крем - масло, іриска.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaTrufelnaya.png" height="76" width="78">
-				<p class="tasteName">Трюфельна</p>
-				<span>Коржі - бісквіт; Крем - масло, какао, згущене молоко.</span>
-				</div>
-			</div>
-			
-			<div class="line">
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaPrajskaya.png" height="76" width="78">
-				<p class="tasteName">Празька</p>
-				<span>Коржі - шоколадний бісквіт; Крем - масло, какао,повидло, шоколад, згущене молоко.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaPancho.png" height="76" width="78">
-				<p class="tasteName">Сметанкова</p>
-				<span>Коржі - бісквіт; Начинка - вишня, родзинки, волоський горіх; Крем - вершки, сметана.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaKlyuchik.png" height="76" width="78">
-				<p class="tasteName">Кавова</p>
-				<span>Коржі - бісквіт білий і кавовий; Начинка - архіс; Крем - ириска, масло, вершки</span>
-				</div>
-			</div>
-				
-			<div class="line">
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaRazvalini.png" height="76" width="78">
-				<p class="tasteName">Вершкова</p>
-				<span>Коржі -вершковий бісквіт; Начинка - персик,лимонний джем;крем - творог, вершки.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaFruktovaya.png" height="76" width="78">
-				<p class="tasteName">Фруктова</p>
-				<span>Коржі - бісквіт; Начинка - банан, ківі, персик, ананас, желе;Крем - вершки, згущене молоко, йогурт.</span>
-				</div>
-
-				<div class="tasteBlock">
-				<img src="img/taste/nachinkaNich.png" height="76" width="78">
-				<p class="tasteName">Вишнева</p>
-				<span>Коржі - бісквіт; Начинка - вишня, родзинки, волоський горіх; Крем - вершки, сметана.</span>
-			  </div>
-			</div>
+			{{#if toppings}}
+				{{#each toppings}}
+					<div class="tasteBlock">
+					<img src="img/toppings/{{photo}}" height="76" width="78">
+					<p class="tasteName">{{name}}</p>
+					<span>{{description}}</span>
+					</div>
+				{{/each}}
+			{{/if}}	
 		</div>
-
+	</div>
 			<!--Order form -->
 
 		<div class="order" id="order">

@@ -16,11 +16,15 @@ exports.addOrder = function(req,res){
 }
 
 exports.getAll = function(req,res){
-	
+	var data = {};
 	db.getAllOrders(function(rows){
-			var orders = {orders:rows};
-			res.render('home',orders);
+			data.orders=rows;
 	})
+	db.getAllToppings(function(rows){
+			data.toppings=rows;
+			res.render('home',data);
+	})
+		
 }
 
 exports.changeStatus = function(req,res){
