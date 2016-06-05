@@ -1,0 +1,67 @@
+<script type="text/javascript">
+	function deleteOrder(id){
+		$.ajax({
+			url:'/deleteOrder/'+ id, 
+			statusCode:{
+				200:function(){$("#order-"+id).remove()},
+				404:function(){alert("Замовлення було вже видалено")}
+			}
+		});
+	}
+	function changeStatus(id,status){
+		var newStatus = status + 1;
+		if(status < 2){
+			$.ajax({
+				url:'/changeStatus/' +id +'/' + newStatus,
+				statusCode:{
+					200:function(){
+						$('#status-'+ id).attr('onclick','changeStatus('+id + ',' + newStatus + ')');
+						$('#order-'+ id).removeClass('orderStatus-' + status ).addClass('orderStatus-' + newStatus);
+						$('#status-' + id).attr('value', 'Завершити');
+					},
+					404:function(){}
+				}
+			})
+		}
+	}
+	$(function() {
+		$( "#tabs-min" ).tabs();
+	});
+</script>
+<main>
+<div id="tabs-min">
+	<ul>
+		<li><a href="#tabs-1">Замовлення</a></li>
+		<li><a href="#tabs-2">Начинки</a></li>
+		<li><a href="#tabs-3">Роботи</a></li>
+	</ul>
+	<div id="tabs-1">
+		<div id="container">
+			{{#each orders}}
+			<div class="orderBlock">
+				<ul class="orderView orderStatus-{{status}}" id="order-{{id}}">
+					<li>Ім`я: {{name}}</li>
+					<li>Контактний телефон: {{phone}}</li>
+					<li>Емейл: {{email}}</li>
+					<li>Побажання до замовлення: {{description}}</li>	
+					<li>Дата: {{date}}</li>
+
+
+					<li class="">
+						{{#equal status 0 }}
+						<input type="button" value="Прийняти замовлення " id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
+						{{/equal}}
+						{{#equal status 1 }}
+						<input type="button" value="Завершити" id="status-{{id}}"onclick="changeStatus({{id}},{{status}})"/>
+						{{/equal}}
+					</li>
+					<li><input type="button" value="Видалити" onclick="deleteOrder({{id}})"/></li>
+				</ul>
+			</div>
+			{{/each}}
+		</div>
+	</div>
+	<div id="tabs-2">tab1</div>
+	<div id="tabs-3">tab2</div>
+</div>
+</main>

@@ -1,0 +1,50 @@
+#container{
+	width:80%;
+	margin-left: 10%;
+}
+.orderBlock{
+	display:inline-block;
+	width: 33%;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 40px;
+
+}
+.orderView{
+	font-size:18px;
+	border:1px solid black;
+	padding:4%;
+	border-radius: 10px;
+	height: 100%;
+	box-sizing:border-box;
+	
+}
+.orderView input{
+	background-color: #9ec9c4;
+	text-align: center;
+  font-size: 15px;
+  margin-top: 6%;
+  outline: none;
+  padding:2px;
+}
+.orderView input:hover{
+	cursor:pointer;
+	background-color: #95D5CE;
+	 outline: none;
+}
+.orderStatus-0 {
+	border-top: 5px solid green;
+	border-bottom: 5px solid green;
+}
+.orderStatus-1{
+	border-top: 5px solid red;
+	border-bottom: 5px solid red;
+}
+.orderStatus-2{
+	border-top: 5px solid blue;
+	border-bottom: 5px solid blue;
+}
+
+.orderStatus-2 input[id^='status-']{
+	display:none;
+}
