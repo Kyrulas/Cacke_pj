@@ -39,7 +39,7 @@
 						+"<td>"+form[0].value+"</td>"
 						+"<td>"+form[1].value+"</td>"
 						+"<td><input type=\"file\" name=\"photo\" onchange=\"addPhoto("+result+",this)\"></td>"
-						+"<td><button onclick=\"deleteTopping("+result+")\">Видалити</button></td>"
+						+"<td><button onclick=\"deleteTopping("+result+")\">.</button></td>"
 						+"</tr>");
 					$( "#toppingForm" )[0].reset();
 				}
@@ -118,7 +118,7 @@
 				<label for"name">Назва начинки</label>
 				<input type="text" name="name" placeholder="Назва начинки" id="name">
 				<label for"description">Опис начинки</label>
-				<input type="text" name="description" placeholder="Опис начинки" id="description">
+				<textarea name="description" placeholder="Опис начинки" id="description"></textarea>
 				<button>Зберегти</button>
 			</form>
 			<table id="toppingTable">
@@ -132,7 +132,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#each toppings}}
+						{{#each toppings}}
 					<tr id="topping-{{id}}">
 						<td>{{id}}</td>
 						<td>{{name}}</td>
@@ -142,7 +142,10 @@
 							<img src="img/toppings/{{photo}}">
 							{{/if}}
 							{{#equal photo null}}
+							<div class="select">
+							<span>Вибрати фото</span>
 							<input type="file" name="photo" onchange="addPhoto({{id}},this)">
+							</div>
 							{{/equal}}
 						</td>
 						<td><button id="deleteTopping-{{id}}" onclick="deleteTopping({{id}})"></button>

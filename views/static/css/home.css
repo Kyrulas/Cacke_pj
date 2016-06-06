@@ -4,50 +4,157 @@
 }
 .orderBlock{
 	display:inline-block;
-	width: 33%;
-  height: 300px;
-  overflow: hidden;
-  margin-bottom: 40px;
-
+	width: 45%;
+	height: 300px;
+	overflow: hidden;
+	margin: 0px 20px;
+	margin-bottom: 40px;
+	transition: all 2000ms;
+}
+.orderBlock:hover{
+	transform: scale(1.05, 1.05);
 }
 .orderView{
-	font-size:18px;
+	font-size:16px;
 	border:1px solid black;
-	padding:4%;
+	padding:5%;
 	border-radius: 10px;
 	height: 100%;
 	box-sizing:border-box;
+	color: #666;
+	overflow-y: auto;
 	
 }
-.orderView input{
-	background-color: #9ec9c4;
+.orderBlock .orderView input{
+	background: rgb(252, 252, 252);
 	text-align: center;
-  font-size: 15px;
-  margin-top: 6%;
-  outline: none;
-  padding:2px;
+	font-size: 14px;
+	margin: 10% 2%;
+	outline: none;
+	padding: 5px;
+	width: 43%;
+	border-radius: 9px;
+	float: left;
+	color: #666;
+	display: inline-block;
+}
+.orderView li{
+	margin-bottom:5px;
 }
 .orderView input:hover{
 	cursor:pointer;
-	background-color: #95D5CE;
-	 outline: none;
+	box-shadow: 0 1px 2px #d1d1d1;
+	transform: scale(1.05, 1.05);
+	outline: none;
+	outline: none;
 }
 .orderStatus-0 {
-	border-top: 5px solid green;
-	border-bottom: 5px solid green;
+	border-top: 15px solid rgba(234, 24, 191, 0.19);;
+	border-bottom: 15px solid rgba(234, 24, 191, 0.19);;
+}
+.orderStatus-0:before{
+	content:"Нове замовлення";
+	color: #E12386;
+	padding-left: 55%;
+	font-size: 18px;
 }
 .orderStatus-1{
-	border-top: 5px solid red;
-	border-bottom: 5px solid red;
+	border-top: 15px solid rgba(50, 255, 235, 0.29);;
+	border-bottom: 15px solid rgba(50, 255, 235, 0.29);;
+}
+.orderStatus-1:before{
+	content:"В опрацюванні";
+	color:  #1B6C64;
+	padding-left: 65%;
+	font-size: 18px;
 }
 .orderStatus-2{
-	border-top: 5px solid blue;
-	border-bottom: 5px solid blue;
+	border-top: 15px solid rgba(174, 190, 73, 0.33);;
+	border-bottom: 15px solid rgba(174, 190, 73, 0.33);;
+}
+.orderStatus-2:before{
+	content:"Замовлення Готове";
+	color: rgb(44, 51, 5);
+  padding-left: 55%;
+  font-size: 18px;
 }
 
 .orderStatus-2 input[id^='status-']{
 	display:none;
 }
+/*Tabs*/
+#tabs-min { 
+	background: transparent; 
+	border: none; 
+} 
+#tabs-min .ui-widget-header { 
+	background: transparent; 
+	border: none; 
+	border-bottom: 1px solid #c0c0c0; 
+	-moz-border-radius: 0px; 
+	-webkit-border-radius: 0px; 
+	border-radius: 0px; 
+} 
+#tabs-min .ui-tabs-nav .ui-state-default { 
+	background: transparent; 
+	border: none; 
+
+} 
+#tabs-min .ui-tabs-nav .ui-state-active { 
+	background: transparent url(../../img/uiTabsArrow.png) no-repeat bottom center; 
+	border: none; 
+} 
+#tabs-min .ui-tabs-nav .ui-state-default a { 
+	color: #c0c0c0; 
+	outline: none;
+} 
+#tabs-min .ui-tabs-nav .ui-state-active a { 
+	color: #52A097;
+	outline: none;
+}
+#tabs-min.ui-tabs .ui-tabs-nav li{
+	display: inline-block; 
+	float: none; 
+	top: 0px; 
+	margin: 0em; 
+	padding-bottom: 0px;
+}
+#tabs-min .ui-tabs-nav{
+	text-align: center;
+}
+
+/*Tabs Form*/
+#tabs-2{
+	width: 50%;
+	margin-left: 25%;
+}
+#toppingForm input,textarea{
+	display: block;
+	margin-bottom: 15px;
+	padding:10px;
+	width: 100%;
+}
+#toppingForm button{
+	margin-bottom: 15px;
+	padding:10px;
+	width: 30%;
+	border-radius: 20px;
+	background: #ededed;
+}
+#toppingForm button:hover{
+	box-shadow: 0 1px 2px #d1d1d1;
+	transform: scale(1.05, 1.05);
+	outline:none;
+}
+#tabs-2 input[type:file]{
+	background-color: black;
+}
+#tabs-2  label, button{
+	color:#666;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+
 /*Topping Table*/
 #toppingTable{
 	font-family:Arial, Helvetica, sans-serif;
@@ -65,12 +172,12 @@
 	background: #ededed;
 	background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
 	background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
-	
+	font-size:18px;	
 }
 #toppingTable tr{
-    border-radius: 6px;
-    height: 60px;
-    margin: 10px 0;   
+	border-radius: 6px;
+	height: 60px;
+	margin: 10px 0;   
 }
 #toppingTable th, td{
 	text-align: left;
@@ -86,6 +193,71 @@
 #toppingTable button{
 	margin-right: 5px;
 }
-#toppingTable button:before{
-	content: "\e00f";
+#toppingTable button{
+	background:url(../img/delete.png) no-repeat;
+	background-size: 30px 32px;
+	width: 36px;
+	height: 40px;
+	border-radius: 20px;
+	cursor: pointer;
 }
+#toppingTable button:hover{
+	background-color: rgba(227, 221, 221, 0.52);
+	transform: scale(1.05, 1.05);
+}
+
+#toppingTable input[type="file"]{
+	outline:none;
+	opacity:0; 
+	max-width: 80px;
+}
+.select{
+	width: 100%;
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 2px;
+	cursor: pointer;
+	text-shadow: 1px 1px #fff;
+	display: block;
+	background-color: rgba(236, 236, 236, 0.36);
+	vertical-align: middle;
+}
+.select span{
+	position: absolute;
+	margin: 5px 0px;
+}
+
+
+/* #toppingTable input::-webkit-file-upload-button {
+	visibility: hidden;
+}
+#toppingTable input{
+	outline:none;
+	opacity:0; */
+}
+/* #hide{
+	width: 40%;
+	overflow: hidden;
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 2px;
+	cursor: pointer;
+	text-shadow: 1px 1px #fff;
+	display: block;
+	background-color: rgba(236, 236, 236, 0.36);
+	vertical-align: middle;
+} */
+
+/* #toppingTable input::before{
+	content:" Вибрати файл ";
+	border: 1px solid #999;
+	border-radius: 3px;
+	padding: 10px 2px;
+	cursor: pointer;
+	text-shadow: 1px 1px #fff;
+	display: inline-block;
+	outline:none;
+	margin-top: 6px;
+	margin-bottom: -10px;
+	background-color: rgba(236, 236, 236, 0.36);
+} */
